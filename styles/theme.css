@@ -1,0 +1,28 @@
+/* These should be added to your globals.css (main tailwind 4 entry point) */
+@import './colors.css' layer(base);
+@import './forms.css';
+
+/* Custom variants */
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme {
+  --color-primary: var(--v-primary);
+  --color-danger: var(--v-danger);
+
+  --color-surface: var(--v-surface);
+  --color-surface-50: var(--v-surface-50);
+
+  --color-ink: var(--v-ink);
+
+  --color-white: #ffffff;
+
+  --color-border-input: var(--v-border-input);
+  --border-color-input: var(--v-border-input);
+
+  --background-image-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23677788' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+
+  --mask-close-circle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z' clip-rule='evenodd' /%3E%3C/svg%3E");
+
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+}

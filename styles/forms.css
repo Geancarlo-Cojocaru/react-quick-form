@@ -1,0 +1,234 @@
+@layer base {
+  [type='text'],
+  [type='email'],
+  [type='url'],
+  [type='password'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='week'],
+  [multiple],
+  textarea,
+  select {
+    @apply
+    appearance-none
+    bg-surface
+    border
+    border-input
+    outline-hidden
+    px-3
+    py-2.5
+    rounded-sm
+    w-full
+    text-ink
+    placeholder:text-ink-soft
+    transition-all
+    duration-200
+    align-top
+    scroll-mt-24
+    /* focus styles */
+    focus:border-primary/80
+    focus:ring-3
+    focus:ring-primary/30
+    /* invalid styles */
+    user-invalid:border-danger
+    user-invalid:placeholder:text-danger/60
+    [&.hasError]:invalid:border-danger
+    [&.hasError]:invalid:placeholder:text-danger/60
+    /* invalid focus styles */
+    user-invalid:focus:border-danger/80
+    user-invalid:focus:ring-danger/50
+    [&.hasError]:invalid:focus:border-danger/80
+    [&.hasError]:invalid:focus:ring-danger/30
+    /* valid styles */
+    not-placeholder-shown:not-focus:valid:border-primary-800/35
+    /* readonly & disabled styles */
+    read-only:bg-surface-50
+    disabled:bg-surface-50
+    disabled:cursor-not-allowed;
+  }
+
+  select:is([multiple]) {
+    @apply
+    bg-surface
+    read-only:bg-surface;
+  }
+
+  select:not([multiple]) {
+    @apply
+    bg-chevron
+    bg-no-repeat
+    bg-position-[right_0.35rem_center]
+    bg-size-[1.8rem_1.8rem]
+    bg-origin-border
+    read-only:bg-surface;
+  }
+
+  option {
+    @apply
+    bg-surface
+    py-2;
+
+    &:not(:first-child) {
+      @apply
+      border-t;
+    }
+  }
+
+  option:checked:not([disabled]) {
+    @apply
+    bg-surface
+    text-primary
+    font-bold;
+  }
+
+  /* Handle clear button on input type search */
+  [type='search']::-webkit-search-cancel-button {
+    @apply
+    relative
+    -right-1
+    appearance-none
+    size-5
+    cursor-pointer
+    bg-ink
+    mask-(--mask-close-circle)
+    mask-contain
+    mask-center
+    mask-no-repeat;
+  }
+
+  [type='file'] {
+    @apply
+    bg-surface
+    w-full
+    rounded-sm
+    border
+    border-input
+    focus:outline-0
+    text-ink
+    placeholder:text-ink-soft
+    transition-all
+    duration-200
+    align-top
+    scroll-mt-24
+    file:bg-surface-200
+    file:border-0
+    file:text-ink
+    file:py-2.5
+    file:px-3
+    file:mr-3
+    file:cursor-pointer;
+  }
+
+  [type='radio'],
+  [type='checkbox'] {
+    @apply
+    appearance-none
+    relative
+    size-4.5
+    border
+    border-input
+    bg-surface
+    transition-all
+    duration-200
+    cursor-pointer
+    checked:bg-primary
+    checked:border-primary
+    /* invalid styles */
+    user-invalid:border-danger/80
+    [&.hasError]:invalid:border-danger/80
+    user-invalid:focus:ring-danger/15
+    [&.hasError]:invalid:focus:ring-danger/15
+    /* readonly & disabled styles */
+    read-only:opacity-80
+    disabled:opacity-80
+    disabled:cursor-not-allowed;
+  }
+
+  [type='radio'] {
+    @apply
+    rounded-full
+    ring-3
+    ring-surface
+    ring-inset
+    checked:ring-inset
+    checked:ring-3
+    checked:outline-1
+    checked:outline-primary
+    focus:ring-inset
+    focus:ring-3;
+  }
+
+  [type='checkbox'] {
+    @apply
+    rounded-sm
+    focus:ring-3
+    focus:ring-offset-0
+    focus:ring-primary/15;
+  }
+
+  [type='checkbox']:checked:after {
+    @apply
+    content-['✔']
+    pl-px
+    flex
+    items-center
+    justify-center
+    absolute
+    inset-0
+    text-sm
+    text-white
+  }
+}
+
+/* CSS for hiding arrow up and down buttons on input='number' */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/*
+  Change Autocomplete Styles in WebKit Browsers
+  source: https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/
+*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+select:-webkit-autofill,
+select:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--v-ink);
+  -webkit-box-shadow: 0 0 0 1000px var(--v-surface-50) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Style for the FOCUSED autofill state */
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow:
+    0 0 0 1000px var(--v-surface-50) inset,
+    0 0 0 3px color-mix(in oklch, var(--v-primary), transparent 70%);
+}
+
+@layer components {
+  /* Class to add asterisk after required form labels */
+  .with-asterisc {
+    @apply inline-block;
+
+    &::after {
+      content: " *";
+      @apply text-danger;
+    }
+  }
+}
