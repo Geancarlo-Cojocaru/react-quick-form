@@ -21,9 +21,9 @@ Copy the utility into your project using one of the following methods:
 ### Full Installation
 Includes all components, hooks, utilities, and Tailwind styles.
 
-**Default path (`src/quick-forms`):**
+**Default path (`src/react-quick-form`):**
 ```bash
-git clone --depth 1 https://github.com/Geancarlo-Cojocaru/react-quick-form.git src/quick-forms && rm -rf src/quick-forms/.git
+git clone --depth 1 https://github.com/Geancarlo-Cojocaru/react-quick-form.git src/react-quick-form && rm -rf src/react-quick-form/.git
 ```
 
 **Custom path:**
@@ -35,7 +35,7 @@ git clone --depth 1 https://github.com/Geancarlo-Cojocaru/react-quick-form.git y
 Includes only the core logic: Hooks, Types, Config, and the `FieldError` component. Ideal if you want to build your own UI components from scratch.
 
 ```bash
-mkdir -p src/quick-forms && cd src/quick-forms && \
+mkdir -p src/react-quick-form && cd src/react-quick-form && \
 git init && \
 git remote add origin https://github.com/Geancarlo-Cojocaru/react-quick-form.git && \
 git config core.sparseCheckout true && \
@@ -53,7 +53,7 @@ rm -rf .git && cd -
 ## Project Structure
 
 ```text
-quick-forms/
+react-quick-form/
 ├── components/                     # Pre-built accessible form components
 │   ├── FieldError.tsx              # Core validation message display
 │   ├── Input.tsx                   # Custom text/email/number input
@@ -107,7 +107,7 @@ To build your own input, pass the `ref` of your input element to `FieldError`.
 
 ```tsx
 import { useRef } from 'react';
-import { FieldError } from '@/quick-forms/components/FieldError';
+import { FieldError } from '@/react-quick-form/components/FieldError';
 
 export function MyCustomInput() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -157,7 +157,7 @@ For validation logic that goes beyond native HTML attributes (like password matc
 
 ```tsx
 import { useRef } from 'react';
-import { FieldError, useTriggerCustomError } from '@/quick-forms';
+import { FieldError, useTriggerCustomError } from '@/react-quick-form';
 
 export function ComplexInput({ serverError }) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -219,7 +219,7 @@ Quick Forms work best with standard HTML form submission patterns. Use the nativ
 
 ```tsx
 import { SubmitEvent, useRef } from 'react';
-import { formDataToObject } from '@/quick-forms/utils/transformFormData';
+import { formDataToObject } from '@/react-quick-form/utils/transformFormData';
 
 export function MyForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -420,7 +420,7 @@ Tools for handling standard HTML Form submissions:
 
 ## 7. Bonus: Styling
 
-To include the styles and ensure Tailwind CSS v4 scans the `quick-forms` directory for class names, add the following to your global CSS file (e.g., `styles/globals.css`):
+To include the styles and ensure Tailwind CSS v4 scans the `react-quick-form` directory for class names, add the following to your global CSS file (e.g., `styles/globals.css`):
 
 ```css
 /* 
@@ -428,25 +428,25 @@ To include the styles and ensure Tailwind CSS v4 scans the `quick-forms` directo
   If you don't have these colors defined in your project, import our defaults.
   These variables (e.g., --v-primary, --v-danger) are used by the form styles.
 */
-@import "../quick-forms/styles/colors.css" layer(base);
+@import "../react-quick-form/styles/colors.css" layer(base);
 
 /* 
   2. Theme Extension (Recommended)
   Extends the @theme block with form-specific variables (colors, masks, icons).
 */
-@import "../quick-forms/styles/theme.css";
+@import "../react-quick-form/styles/theme.css";
 
 /* 3. Form Component Styles */
-@import "../quick-forms/styles/forms.css";
+@import "../react-quick-form/styles/forms.css";
 
-/* Include the quick-forms directory in Tailwind's scan */
-@source "../quick-forms/**/*.{js,ts,jsx,tsx}";
+/* Include the react-quick-form directory in Tailwind's scan */
+@source "../react-quick-form/**/*.{js,ts,jsx,tsx}";
 ```
 
 Alternatively, if you are still using Tailwind CSS v3, include the directory in your `tailwind.config.js`:
 ```javascript
 content: [
-  "./quick-forms/**/*.{js,ts,jsx,tsx}",
+  "./react-quick-form/**/*.{js,ts,jsx,tsx}",
 ]
 ```
 And import the CSS file in your main entry point.
