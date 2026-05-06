@@ -1,4 +1,4 @@
-# Quick Forms
+# React Quick Form
 
 A lightweight, high-performance form validation utility for Next.js and React. Unlike full UI kits, Quick Forms focuses on providing **hooks**, **validation logic**, and **error display components** that you can integrate into *any* existing component library (like shadcn/ui, MUI, or your own custom inputs).
 
