@@ -1,8 +1,8 @@
-// Replace this with your own 'cn' function and delete the one from the 'utils' folder.
-import { cn as internalCn } from './utils/cn';
+// Replace this with your own 'cn' function
+import { lightCn } from './utils/lightCn';
 
 /** A utility function for combining class names. */
-export const cn = internalCn;
+export const cn = lightCn;
 
 /** Default error messages for form validation states. */
 export const DEFAULT_ERROR_MESSAGES = {
